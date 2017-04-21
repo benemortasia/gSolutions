@@ -29,9 +29,14 @@ public class Answer {
 	 * The only answer it can be is the string itself, {abaaaba}.
 	 */
 	public static void main(String[] args) {
-		// final String s = new String("abccbaabccba");
+		final String s = new String("abccbaabccba");
 		// final String s = new String("abcabcabcabc");
-		final String s = new String("aaaaaaaaaa");
+
+		// TODO
+		// notice a string consists of a single character,
+		// return s.length();
+		// final String s = new String("aaaaaaaaaa");
+
 		System.out.println("Answer: " + answer(s));
 	}
 
@@ -56,17 +61,15 @@ public class Answer {
 
 			// count number of occurrences for each sequence
 			// get and return a max value for those occurrences
-			// also need an index for checking sequences in s
+			// index for checking sequences in s
 			int count = 0;
 			// int max = 0;
 			int index = 0;
 
-			// add each unique sequence to the set
+			// add each sequence to the set
 			for (int i = 1; i < s.length() + 1; ++i) {
 				list.add(s.substring(0, i));
 			} // end for()
-
-			// only one character
 
 			// put() all sequences into Map
 			for (final String seq : list) {
@@ -83,19 +86,15 @@ public class Answer {
 						index += seq.length();
 						continue;
 					} // end if()
-					System.out.println("Count of sequence: " + seq + " = " + count);
+					System.out.println("Seq:  " + seq + " | Count: " + count);
 					occ.put(seq, count);
 					count = 0;
 				} // end while()
 
 			} // end for each seq in list
 
-			// we have one character. just return the whole string
-			if (occ.values().size() == 1)
-				return s.length();
-
-			// occ = [a, ab, abc, abcc, abccb, abccba, abccbaa, abccbaab, abccbaabc, abccbaabcc, abccbaabccb, abccbaabccba]
-			// occ = [4, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1];
+			// occ.keys = [a, ab, abc, abcc, abccb, abccba, abccbaa, abccbaab, abccbaabc, abccbaabcc, abccbaabccb, abccbaabccba]
+			// occ.values = [4, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1];
 			System.out.println("Occurrences: " + occ.values());
 
 			// TODO
@@ -106,7 +105,6 @@ public class Answer {
 			// return max;
 			// else
 			// return 1;
-
 			for (final int c : occ.values()) {
 
 			} // end for each count in values
